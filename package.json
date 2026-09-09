@@ -1,7 +1,8 @@
 {
   "name": "imposter-word-game",
+  "description": "A local pass-and-play social deduction word game for one device and a group of players.",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -21,10 +22,8 @@
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
     "@vitejs/plugin-react": "^6.1.0",
-    "autoprefixer": "^10.5.5",
     "jsdom": "^30.0.1",
     "oxlint": "^1.79.0",
-    "postcss": "^8.5.28",
     "tailwindcss": "^4.3.3",
     "vite": "^8.2.2",
     "vitest": "^5.0.0"
