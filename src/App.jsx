@@ -1,7 +1,10 @@
+import { DiscussionScreen } from './components/DiscussionScreen'
 import { PlaceholderPhase } from './components/PlaceholderPhase'
 import { ProgressIndicator } from './components/ProgressIndicator'
 import { RoleRevealScreen } from './components/RoleRevealScreen'
 import { SetupScreen } from './components/SetupScreen'
+import { VoteResultsScreen } from './components/VoteResultsScreen'
+import { VotingScreen } from './components/VotingScreen'
 import { useGame } from './hooks/useGame'
 import { PHASES } from './utils/gameLogic'
 
@@ -32,26 +35,26 @@ export default function App() {
       )}
 
       {state.phase === PHASES.DISCUSSION && (
-        <PlaceholderPhase
-          title="Discussion"
-          description="Give your clues, then head to voting."
-          onBack={actions.newGame}
+        <DiscussionScreen
+          players={state.players}
+          roundNumber={state.roundNumber}
+          onStartVoting={actions.startVoting}
         />
       )}
 
       {state.phase === PHASES.VOTING && (
-        <PlaceholderPhase
-          title="Voting"
-          description="Private pass-and-play voting is coming next."
-          onBack={actions.newGame}
+        <VotingScreen
+          players={state.players}
+          currentVoterIndex={state.currentVoterIndex}
+          onCastVote={actions.castVote}
         />
       )}
 
       {state.phase === PHASES.VOTE_RESULT && (
-        <PlaceholderPhase
-          title="Vote Results"
-          description="The reveal and winner screen is coming next."
-          onBack={actions.newGame}
+        <VoteResultsScreen
+          players={state.players}
+          voteResult={state.voteResult}
+          onContinue={actions.continueToGameOver}
         />
       )}
 
