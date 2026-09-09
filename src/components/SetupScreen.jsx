@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { PlayerRow } from './PlayerRow'
 import { CATEGORIES, DIFFICULTIES } from '../data/wordPairs'
 import {
@@ -24,6 +24,7 @@ export function SetupScreen({ onStart }) {
   const [difficulty, setDifficulty] = useState('all')
   const [noWordImposter, setNoWordImposter] = useState(false)
   const [showRules, setShowRules] = useState(false)
+  const rulesTriggerRef = useRef(null)
 
   const errors = useMemo(() => {
     const map = {}
@@ -175,6 +176,7 @@ export function SetupScreen({ onStart }) {
           Start Game
         </button>
         <button
+          ref={rulesTriggerRef}
           type="button"
           onClick={() => setShowRules(true)}
           className="text-sm font-medium text-paper-faint underline decoration-line underline-offset-4 hover:text-paper-dim"
@@ -183,12 +185,52 @@ export function SetupScreen({ onStart }) {
         </button>
       </div>
 
-      {showRules && <RulesSheet onClose={() => setShowRules(false)} />}
+      {showRules && (
+        <RulesSheet
+          onClose={() => {
+            setShowRules(false)
+            rulesTriggerRef.current?.focus()
+          }}
+        />
+      )}
     </div>
   )
 }
 
 function RulesSheet({ onClose }) {
+  const closeButtonRef = useRef(null)
+  const dialogRef = useRef(null)
+
+  useEffect(() => {
+    closeButtonRef.current?.focus()
+
+    function handleKeyDown(event) {
+      if (event.key === 'Escape') {
+        onClose()
+        return
+      }
+      if (event.key !== 'Tab') return
+
+      const focusable = dialogRef.current?.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      )
+      if (!focusable || focusable.length === 0) return
+      const first = focusable[0]
+      const last = focusable[focusable.length - 1]
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault()
+        last.focus()
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault()
+        first.focus()
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [onClose])
+
   return (
     <div
       role="dialog"
@@ -198,6 +240,7 @@ function RulesSheet({ onClose }) {
       onClick={onClose}
     >
       <div
+        ref={dialogRef}
         onClick={(event) => event.stopPropagation()}
         className="w-full max-w-md rounded-t-2xl border border-line bg-ink-elevated p-6 shadow-card sm:rounded-2xl"
       >
@@ -213,6 +256,7 @@ function RulesSheet({ onClose }) {
           <li><strong className="text-paper">6. Catch them.</strong> Vote out the Imposter to win as a group.</li>
         </ol>
         <button
+          ref={closeButtonRef}
           type="button"
           onClick={onClose}
           className="w-full rounded-xl bg-accent py-3 text-center font-display font-semibold text-ink"
