@@ -13,7 +13,7 @@ export function GameOverScreen({
   const imposter = players.find((player) => player.id === imposterId)
 
   return (
-    <div className="mx-auto flex min-h-[calc(100dvh-3rem)] w-full max-w-md flex-col px-5 pb-8 pt-4 text-center">
+    <div className="animate-enter mx-auto flex min-h-[calc(100dvh-3rem)] w-full max-w-md flex-col px-5 pb-8 pt-4 text-center">
       <p className="font-display text-xs uppercase tracking-[0.3em] text-accent">Game Over</p>
       <h1 className="mt-2 font-display text-3xl font-semibold text-paper">
         The Imposter was

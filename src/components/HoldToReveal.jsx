@@ -26,8 +26,8 @@ export function HoldToReveal({ children, accentClass = 'border-line-strong', onF
       onPointerDown={handlePointerDown}
       onKeyDown={handleKeyDown}
       aria-label={isHeld ? 'Your secret, revealed. Release to hide.' : 'Press and hold to reveal your secret'}
-      className={`relative flex aspect-[4/5] w-full cursor-pointer select-none flex-col items-center justify-center overflow-hidden rounded-2xl border-2 bg-ink-elevated text-center shadow-card transition-colors duration-150 ${
-        isHeld ? accentClass : 'border-line-strong'
+      className={`relative flex aspect-[4/5] w-full cursor-pointer select-none flex-col items-center justify-center overflow-hidden rounded-2xl border-2 bg-ink-elevated text-center shadow-card transition-[scale,border-color] duration-200 ease-out ${
+        isHeld ? `${accentClass} scale-[1.015]` : 'border-line-strong'
       }`}
     >
       {isHeld ? (

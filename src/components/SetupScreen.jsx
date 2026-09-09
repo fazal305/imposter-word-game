@@ -58,7 +58,7 @@ export function SetupScreen({ onStart }) {
   }
 
   return (
-    <div className="mx-auto flex min-h-dvh w-full max-w-md flex-col px-5 pb-8 pt-10 sm:pt-14">
+    <div className="animate-enter mx-auto flex min-h-dvh w-full max-w-md flex-col px-5 pb-8 pt-10 sm:pt-14">
       <header className="mb-8 text-center">
         <p className="font-display text-sm uppercase tracking-[0.3em] text-accent">Pass &amp; Play</p>
         <h1 className="mt-2 font-display text-4xl font-semibold tracking-tight text-paper">Imposter</h1>
@@ -113,7 +113,7 @@ export function SetupScreen({ onStart }) {
               type="button"
               onClick={() => setCategoryId(category.id)}
               aria-pressed={categoryId === category.id}
-              className={`rounded-full border px-3.5 py-1.5 text-sm font-medium transition-colors ${
+              className={`min-h-11 rounded-full border px-3.5 py-2 text-sm font-medium transition-colors active:scale-[0.97] ${
                 categoryId === category.id
                   ? 'border-accent bg-accent/15 text-accent-strong'
                   : 'border-line text-paper-dim hover:border-line-strong'
@@ -137,7 +137,7 @@ export function SetupScreen({ onStart }) {
                 type="button"
                 onClick={() => setDifficulty(option.id)}
                 aria-pressed={difficulty === option.id}
-                className={`flex-1 rounded-lg border py-2 text-sm font-medium capitalize transition-colors ${
+                className={`min-h-11 flex-1 rounded-lg border py-2.5 text-sm font-medium capitalize transition-colors active:scale-[0.97] ${
                   difficulty === option.id
                     ? 'border-accent bg-accent/15 text-accent-strong'
                     : 'border-line text-paper-dim hover:border-line-strong'

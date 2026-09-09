@@ -2,7 +2,7 @@ export function DiscussionScreen({ players, roundNumber, onStartVoting }) {
   const activePlayers = players.filter((player) => !player.isEliminated)
 
   return (
-    <div className="mx-auto flex min-h-[calc(100dvh-3rem)] w-full max-w-md flex-col px-5 pb-8 pt-4">
+    <div className="animate-enter mx-auto flex min-h-[calc(100dvh-3rem)] w-full max-w-md flex-col px-5 pb-8 pt-4">
       <header className="text-center">
         <p className="font-display text-xs uppercase tracking-[0.3em] text-accent">Round {roundNumber}</p>
         <h1 className="mt-2 font-display text-3xl font-semibold text-paper">Discussion</h1>

@@ -2,7 +2,7 @@ export function PlayerRow({ player, index, error, onRename, onRemove, canRemove 
   return (
     <li className="group">
       <div
-        className={`flex items-center gap-3 rounded-lg border bg-ink-raised/60 px-3 py-2.5 transition-colors ${
+        className={`flex items-center gap-2 rounded-lg border bg-ink-raised/60 py-1.5 pl-3 pr-1.5 transition-colors ${
           error ? 'border-imposter/70' : 'border-line focus-within:border-accent/70'
         }`}
       >
@@ -24,7 +24,7 @@ export function PlayerRow({ player, index, error, onRename, onRemove, canRemove 
           onClick={() => onRemove(player.id)}
           disabled={!canRemove}
           aria-label={`Remove ${player.name || `player ${index + 1}`}`}
-          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md text-paper-faint transition-colors hover:bg-ink-elevated hover:text-danger disabled:pointer-events-none disabled:opacity-0"
+          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md text-paper-faint transition-colors hover:bg-ink-elevated hover:text-danger disabled:pointer-events-none disabled:opacity-0"
         >
           <svg viewBox="0 0 20 20" fill="none" className="h-4 w-4" aria-hidden="true">
             <path

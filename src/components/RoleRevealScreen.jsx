@@ -7,7 +7,7 @@ export function RoleRevealScreen({ player, secret, index, total, onContinue }) {
   const isImposter = secret.role === ROLES.IMPOSTER
 
   return (
-    <div className="mx-auto flex min-h-[calc(100dvh-3rem)] w-full max-w-md flex-col items-center px-5 pb-8 pt-4 text-center">
+    <div className="animate-enter mx-auto flex min-h-[calc(100dvh-3rem)] w-full max-w-md flex-col items-center px-5 pb-8 pt-4 text-center">
       <p className="font-display text-xs uppercase tracking-[0.3em] text-paper-faint">
         Player {index + 1} of {total}
       </p>
@@ -56,9 +56,7 @@ export function RoleRevealScreen({ player, secret, index, total, onContinue }) {
         </HoldToReveal>
       </div>
 
-      <p className="mt-4 text-xs text-paper-faint" aria-hidden={hasRevealed}>
-        Hold to reveal · release to hide
-      </p>
+      <p className="mt-4 text-xs text-paper-faint">Hold to reveal · release to hide</p>
 
       <button
         type="button"

@@ -27,7 +27,7 @@ export function VotingScreen({ players, currentVoterIndex, onCastVote }) {
 
   if (step === STEPS.HANDOFF) {
     return (
-      <div className="mx-auto flex min-h-[calc(100dvh-3rem)] w-full max-w-md flex-col items-center justify-center px-6 text-center">
+      <div className="animate-enter mx-auto flex min-h-[calc(100dvh-3rem)] w-full max-w-md flex-col items-center justify-center px-6 text-center">
         <p className="font-display text-xs uppercase tracking-[0.3em] text-paper-faint">
           Voter {currentVoterIndex + 1} of {activePlayers.length}
         </p>
@@ -52,7 +52,7 @@ export function VotingScreen({ players, currentVoterIndex, onCastVote }) {
 
   if (step === STEPS.RECORDED) {
     return (
-      <div className="mx-auto flex min-h-[calc(100dvh-3rem)] w-full max-w-md flex-col items-center justify-center px-6 text-center">
+      <div className="animate-enter mx-auto flex min-h-[calc(100dvh-3rem)] w-full max-w-md flex-col items-center justify-center px-6 text-center">
         <div className="flex h-16 w-16 items-center justify-center rounded-full bg-success/15 text-success">
           <svg viewBox="0 0 24 24" fill="none" className="h-8 w-8" aria-hidden="true">
             <path d="M5 13l4 4L19 7" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
@@ -72,7 +72,7 @@ export function VotingScreen({ players, currentVoterIndex, onCastVote }) {
   }
 
   return (
-    <div className="mx-auto flex min-h-[calc(100dvh-3rem)] w-full max-w-md flex-col px-5 pb-8 pt-4">
+    <div className="animate-enter mx-auto flex min-h-[calc(100dvh-3rem)] w-full max-w-md flex-col px-5 pb-8 pt-4">
       <header className="text-center">
         <p className="font-display text-xs uppercase tracking-[0.3em] text-paper-faint">
           {voter.name}&rsquo;s vote
