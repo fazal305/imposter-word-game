@@ -1,5 +1,6 @@
 import { PlaceholderPhase } from './components/PlaceholderPhase'
 import { ProgressIndicator } from './components/ProgressIndicator'
+import { RoleRevealScreen } from './components/RoleRevealScreen'
 import { SetupScreen } from './components/SetupScreen'
 import { useGame } from './hooks/useGame'
 import { PHASES } from './utils/gameLogic'
@@ -20,10 +21,13 @@ export default function App() {
       )}
 
       {state.phase === PHASES.ROLE_REVEAL && (
-        <PlaceholderPhase
-          title="Role Reveal"
-          description="Pass-and-hold word reveal is being built next."
-          onBack={actions.newGame}
+        <RoleRevealScreen
+          key={state.players[state.currentRevealIndex].id}
+          player={state.players[state.currentRevealIndex]}
+          secret={state.roles[state.players[state.currentRevealIndex].id]}
+          index={state.currentRevealIndex}
+          total={state.players.length}
+          onContinue={actions.advanceReveal}
         />
       )}
 
