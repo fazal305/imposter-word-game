@@ -4,6 +4,8 @@ A local, pass-and-play social deduction game for 3–12 players on one phone
 or tablet. Everyone gets a secret word — except the Imposter, who gets a
 different (but related) one. Give clues, vote, and catch them.
 
+**[Live demo](https://imposter-word-game-snowy.vercel.app)**
+
 ## Overview
 
 Imposter is built for a group sharing a single device. Each player takes a
